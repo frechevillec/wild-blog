@@ -15,6 +15,7 @@ import services from './services/services.md'
 import common from './components/common/common.md'
 import login from './components/login/login.md'
 import blog from './components/blog/blog.md'
+import algo2 from './components/algo2/algo2.md'
 
 console.log("In app.js")
 console.log(services)
@@ -27,5 +28,6 @@ angular.module('app', [
     services,
     common,
     login,
-    blog
+    blog,
+    algo2
 ])
