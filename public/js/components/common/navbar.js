@@ -1,7 +1,20 @@
+'use strict'
+import moment from 'moment'
+
 let navbar = {
     templateUrl: 'js/components/common/navbar.html',
-    controller: ['UsersService', '$state', function(UsersService, $state) {
+    controller: ['UsersService', '$state', '$interval', function(UsersService, $state, $interval) {
         'use strict'
+
+        let updateTime = "";
+
+        updateTime=()=> {
+                this.time = moment().format("D. MMMM YYYY H:mm:ss");
+        }
+
+       $interval(updateTime, 1000);
+       console.log($interval(updateTime, 1000));
+        
         angular.extend(this, {
             $onInit() {
                 UsersService.getCurrent().then((user) => {
@@ -10,6 +23,7 @@ let navbar = {
 
                 })
             },
+
             disconnect() {
                 UsersService.disconnect().then(() => {
                     Materialize.toast('Disconnected', 4000, 'toast-warning')
@@ -17,7 +31,6 @@ let navbar = {
                     $state.reload()
                 })
             }
-
         })
     }]
 }
